@@ -91,6 +91,10 @@ class Bulldozer extends ToolStroke
 			// dozing on land, replace with land. Simple, eh?
 			eff.setTile(0, 0, DIRT);
 		}
+		if (isRubble(tile)){
+			
+			eff.setTile(0, 0, CLEAR);
+		}
 
 		fixZone(eff);
 		eff.spend(1);
