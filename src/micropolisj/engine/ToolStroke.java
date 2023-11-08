@@ -209,6 +209,7 @@ public class ToolStroke
 			//FIXME- use a canAutoBulldoze-style function here
 			if (isRubble(eff.getTile(0, 0))) {
 				// this tile can be auto-bulldozed
+				
 				cost++;
 			}
 			else {
