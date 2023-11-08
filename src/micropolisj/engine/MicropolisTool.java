@@ -30,7 +30,7 @@ public enum MicropolisTool
 	NUCLEAR(4, 5000),
 	AIRPORT(6, 10000),
 	QUERY(1, 0),
-	GODZELLA(2, 12000),
+	GODZELLA(2, 12000);
 
 	int size;
 	int cost;
