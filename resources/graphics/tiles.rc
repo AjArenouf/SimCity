@@ -1009,3 +1009,12 @@
 957   misc_animation@0,2080
 958   misc_animation@0,2096
 959   misc_animation@0,2112
+# BEGIN GODZELLA #
+960	  Godzella@16, 0        (conducts)
+961   Godzella@32, 0        (conducts)
+962   Godzella@0, 16        (conducts)
+963   Godzella@16, 16 (zone)(conducts)(building = 3x3)(behavior = Godzella)(description = #16)
+964   Godzella@32, 16       (conducts)
+965   Godzella@0, 32        (conducts)
+966   Godzella@16, 32       (conducts)
+967   Godzella@32, 32       (conducts)

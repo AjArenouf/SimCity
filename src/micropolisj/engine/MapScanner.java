@@ -41,7 +41,8 @@ class MapScanner extends TileBehavior
 		STADIUM_EMPTY,
 		STADIUM_FULL,
 		AIRPORT,
-		SEAPORT;
+		SEAPORT,
+		GODZELLA;
 	}
 
 	@Override
@@ -84,11 +85,17 @@ class MapScanner extends TileBehavior
 		case SEAPORT:
 			doSeaport();
 			return;
+		case GODZELLA:
+			doGodzella();
 		default:
 			assert false;
 		}
 	}
-
+	public void doGodzella()
+	{
+		
+	}
+	
 	boolean checkZonePower()
 	{
 		boolean zonePwrFlag = setZonePower();
