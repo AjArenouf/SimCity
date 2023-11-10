@@ -2351,6 +2351,41 @@ public class Micropolis
 		sprites.add(new MonsterSprite(this, xpos, ypos));
 	}
 
+	public void makeMonsterWant()
+	{
+		MonsterWantSprite monster = (MonsterWantSprite) getSprite(SpriteKind.LGZ);
+		if (monster != null) {
+			// already have a monster in town
+			monster.soundCount = 1;
+			monster.count = 1000;
+			monster.flag = false;
+			monster.destX = pollutionMaxLocationX;
+			monster.destY = pollutionMaxLocationY;
+			return;
+		}
+
+		// try to find a suitable starting spot for monster
+
+		for (int i = 0; i < 300; i++) {
+			int x = PRNG.nextInt(getWidth() - 19) + 10;
+			int y = PRNG.nextInt(getHeight() - 9) + 5;
+			int t = getTile(x, y);
+			if (t == RIVER) {
+				makeMonsterWantAt(x, y);
+				return;
+			}
+		}
+
+		// no "nice" location found, just start in center of map then
+		makeMonsterWantAt(getWidth()/2, getHeight()/2);
+	}
+
+	void makeMonsterWantAt(int xpos, int ypos)
+	{
+		assert !hasSprite(SpriteKind.LGZ);
+		sprites.add(new MonsterWantSprite(this, xpos, ypos));
+	}
+
 	public void makeTornado()
 	{
 		TornadoSprite tornado = (TornadoSprite) getSprite(SpriteKind.TOR);
