@@ -140,6 +140,8 @@ public class Micropolis
 	int trafficMaxLocationY;
 	int pollutionMaxLocationX;
 	int pollutionMaxLocationY;
+	int GodzellaLocationX;
+	int GodzellaLocationY;
 	int crimeMaxLocationX;
 	int crimeMaxLocationY;
 	public int centerMassX;
@@ -1252,6 +1254,11 @@ public class Micropolis
 	public CityLocation getLocationOfMaxPollution()
 	{
 		return new CityLocation(pollutionMaxLocationX, pollutionMaxLocationY);
+	}
+	
+	public GodzellaLocation getGodzellaLocation()
+	{
+		return new GodzellaLocation (GodzellaLocationX, GodzellaLocationY);
 	}
 
 	static final int [] TaxTable = {

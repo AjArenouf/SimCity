@@ -23,6 +23,7 @@ public class MonsterSprite extends Sprite
 	int origY;
 	int step;
 	boolean flag; //true if the monster wants to return home
+	boolean godzellainScene;
 
 	//GODZILLA FRAMES
 	//   1...3 : northeast
@@ -74,20 +75,11 @@ public class MonsterSprite extends Sprite
 		if (this.frame == 0) {
 			return;
 		}
-
-		if (soundCount > 0) {
-			soundCount--;
-		}
-
-		int d = (this.frame - 1) / 3;   // basic direction
-		int z = (this.frame - 1) % 3;   // step index (only valid for d<4)
-
-		if (d < 4) { //turn n s e w
-			assert step == -1 || step == 1;
-			if (z == 2) step = -1;
-			if (z == 0) step = 1;
-			z += step;
-
+		MonsterWantSprite godzella = findClosestMonster();
+		if(godzella != null) {
+			destX = godzella.x;
+			destY = godzella.y;
+		}else {
 			if (getDis(x, y, destX, destY) < 60) {
 
 				// reached destination
@@ -106,6 +98,20 @@ public class MonsterSprite extends Sprite
 					return;
 				}
 			}
+		}
+			
+		if (soundCount > 0) {
+			soundCount--;
+		}
+
+		int d = (this.frame - 1) / 3;   // basic direction
+		int z = (this.frame - 1) % 3;   // step index (only valid for d<4)
+
+		if (d < 4) { //turn n s e w
+			assert step == -1 || step == 1;
+			if (z == 2) step = -1;
+			if (z == 0) step = 1;
+			z += step;
 
 			int c = getDir(x, y, destX, destY);
 			c = (c - 1) / 2;   //convert to one of four basic headings
@@ -167,6 +173,7 @@ public class MonsterSprite extends Sprite
 			this.frame = 0; //kill zilla
 		}
 
+
 		for (Sprite s : city.allSprites())
 		{
 			if (checkSpriteCollision(s) &&
@@ -181,4 +188,22 @@ public class MonsterSprite extends Sprite
 
 		destroyTile(x / 16, y / 16);
 	}
-}
+	
+	private MonsterWantSprite findClosestMonster() {
+	    MonsterWantSprite closestMonster = null;
+	    double closestDistance = Double.MAX_VALUE;
+
+	    for (Sprite s : city.allSprites()) {
+	        if (s instanceof MonsterWantSprite && s != this) {
+	            double distance = getDis(x, y, s.x, s.y);
+	            if (distance < closestDistance) {
+	                closestMonster = (MonsterWantSprite) s;
+	                closestDistance = distance;
+	            }
+	        }
+	    }
+
+	    return closestMonster;
+	}}
+
+

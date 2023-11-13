@@ -163,7 +163,7 @@ public abstract class Sprite
 	 */
 	final boolean checkSpriteCollision(Sprite otherSprite)
 	{
-		if (!isVisible()) return false;
+		if (!isVisible()) return false; 
 		if (!otherSprite.isVisible()) return false;
 
 		return (getDis(this.x, this.y, otherSprite.x, otherSprite.y) < 30);

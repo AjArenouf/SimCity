@@ -110,7 +110,7 @@ class MapScanner extends TileBehavior
 		boolean oldPower = city.isTilePowered(xpos, ypos);
 		boolean newPower = (
 			tile == NUCLEAR ||
-			tile == POWERPLANT ||
+			tile == POWERPLANT || 
 			city.hasPower(xpos,ypos)
 			);
 

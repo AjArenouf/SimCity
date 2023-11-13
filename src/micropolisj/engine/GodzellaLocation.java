@@ -11,7 +11,7 @@ package micropolisj.engine;
 /**
  * Coordinates of a location (x,y) in the city.
  */
-public class CityLocation
+public class GodzellaLocation
 {
 	/** The X coordinate of this location.
 	 * Increasing X coordinates correspond to East,
@@ -26,11 +26,11 @@ public class CityLocation
 	/**
 	 * Constructs and initializes city coordinates.
 	 */
-	public CityLocation(int x, int y)
+	public GodzellaLocation(int x, int y)
 	{
 		this.x = x;
 		this.y = y;
-	} 
+	}
 
 	@Override
 	public int hashCode()
@@ -41,8 +41,8 @@ public class CityLocation
 	@Override
 	public boolean equals(Object obj)
 	{
-		if (obj instanceof CityLocation) {
-			CityLocation rhs = (CityLocation)obj;
+		if (obj instanceof GodzellaLocation) {
+			GodzellaLocation rhs = (GodzellaLocation)obj;
 			return this.x == rhs.x && this.y == rhs.y;
 		}
 		else {

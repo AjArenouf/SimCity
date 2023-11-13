@@ -29,7 +29,7 @@ class BuildingTool extends ToolStroke
 	@Override
 	boolean apply1(ToolEffectIfc eff)
 	{
-		switch (tool)
+		switch (tool) 
 		{
 		case FIRE:
 			return applyZone(eff, FIRESTATION);
