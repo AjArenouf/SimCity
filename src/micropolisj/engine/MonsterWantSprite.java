@@ -23,6 +23,7 @@ public class MonsterWantSprite extends Sprite
 	int origY;
 	int step;
 	boolean flag; //true if the monster wants to return home
+	boolean collidedwithGod;
 
 	//GODZILLA FRAMES
 	//   1...3 : northeast
@@ -71,21 +72,20 @@ public class MonsterWantSprite extends Sprite
 	
 	public void moveImpl()
 	{
+		if (this.frame == 0) {
+			return;
+		} 
 		for (Sprite s : city.allSprites()) 
 		{
 			if (checkSpriteCollision(s) &&
 				(s.kind == SpriteKind.GOD)
 				) {
-				if (this.frame == 0) {
-					return;
-				} 
+				city.sendMessage(MicropolisMessage.GODZILLA_COLLISION_ZELLA_CONFIRMED);
 
 				if (soundCount > 0) { 
 					soundCount--;
 				}
 				
-				
-
 				int d = (this.frame - 1) / 3;   // basic direction
 				int z = (this.frame - 1) % 3;   // step index (only valid for d<4)
 

@@ -20,7 +20,7 @@ public class MessagesPane extends JTextPane
 
 	public MessagesPane()
 	{
-		setEditable(false);
+		setEditable(false); 
 	}
 
 	public void appendCityMessage(MicropolisMessage message)

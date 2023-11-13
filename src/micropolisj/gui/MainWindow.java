@@ -1395,7 +1395,7 @@ public class MainWindow extends JFrame
 				if (!engine.autoBudget && engine.isBudgetTime())
 				{
 					showAutoBudget();
-					return;
+					return; 
 				}
 			}
 			updateDateLabel();

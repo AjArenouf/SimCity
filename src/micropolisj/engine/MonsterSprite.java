@@ -23,7 +23,7 @@ public class MonsterSprite extends Sprite
 	int origY;
 	int step;
 	boolean flag; //true if the monster wants to return home
-	boolean godzellainScene;
+	boolean godzellaInScene;
 
 	//GODZILLA FRAMES
 	//   1...3 : northeast
@@ -75,10 +75,13 @@ public class MonsterSprite extends Sprite
 		if (this.frame == 0) {
 			return;
 		}
+		godzellaInScene = false;
 		MonsterWantSprite godzella = findClosestMonster();
 		if(godzella != null) {
+			godzellaInScene = true;
 			destX = godzella.x;
 			destY = godzella.y;
+			city.sendMessageAt(MicropolisMessage.GODZILLA_SEEKING_ZELLA, destX, destY);
 		}else {
 			if (getDis(x, y, destX, destY) < 60) {
 
@@ -117,19 +120,24 @@ public class MonsterSprite extends Sprite
 			c = (c - 1) / 2;   //convert to one of four basic headings
 			assert c >= 0 && c < 4;
 
-			if ((c != d) && city.PRNG.nextInt(11) == 0) {
-				// randomly determine direction to turn
-				if (city.PRNG.nextInt(2) == 0) {
-					z = ND1[d];
+			if (c != d) {
+				if (godzellaInScene) {
+					d = c;
 				}
-				else {
-					z = ND2[d];
-				}
-				d = 4;  //transition heading
-
-				if (soundCount == 0) {
-					city.makeSound(x/16, y/16, Sound.MONSTER);
-					soundCount = 50 + city.PRNG.nextInt(101);
+				if (!godzellaInScene && city.PRNG.nextInt(11) == 0) {
+					// randomly determine direction to turn
+					if (city.PRNG.nextInt(2) == 0) {
+						z = ND1[d];
+					}
+					else {
+						z = ND2[d];
+					}
+					d = 4;  //transition heading
+	
+					if (soundCount == 0) {
+						city.makeSound(x/16, y/16, Sound.MONSTER);
+						soundCount = 50 + city.PRNG.nextInt(101);
+					}
 				}
 			}
 		}
