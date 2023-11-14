@@ -129,8 +129,8 @@ public class MonsterWantSprite extends Sprite
 						d = 4;  //transition heading
 
 						if (soundCount == 0) {
-							city.makeSound(x/16, y/16, Sound.MONSTER);
-							soundCount = 50 + city.PRNG.nextInt(101);
+							city.makeSound(x/16, y/16, Sound.GODZELLA);
+							soundCount = 50 + city.PRNG.nextInt(101);  
 						}
 					}
 				}

@@ -193,8 +193,10 @@ public class MonsterSprite extends Sprite
 				s.explodeSprite();
 			}
 		}
+		if (!godzellaInScene) {
+			destroyTile(x / 16, y / 16);
+		}
 
-		destroyTile(x / 16, y / 16);
 	}
 	
 	private MonsterWantSprite findClosestMonster() {

@@ -66,7 +66,7 @@ class Bulldozer extends ToolStroke
 		if (dim.width * dim.height < 16) {
 			eff.makeSound(0, 0, Sound.EXPLOSION_HIGH);
 		}
-		else if (dim.width * dim.height < 36) {
+		else if (dim.width * dim.height < 36) { 
 			eff.makeSound(0, 0, Sound.EXPLOSION_LOW);
 		}
 		else {
